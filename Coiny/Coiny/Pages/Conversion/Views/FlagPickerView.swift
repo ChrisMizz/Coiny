@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FlagPickerView: View {
-	@State var viewModel: ContentViewModel
+	@State var viewModel: ConversionViewModel
 	@Binding var selectedField: String
 	@Environment(\.dismiss) var dismiss
 
@@ -41,5 +41,5 @@ struct FlagPickerView: View {
 }
 
 #Preview {
-	FlagPickerView(viewModel: ContentViewModel(), selectedField: .constant(""))
+	FlagPickerView(viewModel: ConversionViewModel(), selectedField: .constant(""))
 }

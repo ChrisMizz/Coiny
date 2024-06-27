@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		CF5A3F152BAF35B1005EF884 /* CoinyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A3F142BAF35B1005EF884 /* CoinyApp.swift */; };
-		CF5A3F172BAF35B1005EF884 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A3F162BAF35B1005EF884 /* ContentView.swift */; };
+		CF5A3F172BAF35B1005EF884 /* ConversionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A3F162BAF35B1005EF884 /* ConversionView.swift */; };
 		CF5A3F192BAF35B2005EF884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF5A3F182BAF35B2005EF884 /* Assets.xcassets */; };
 		CF5A3F1C2BAF35B2005EF884 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF5A3F1B2BAF35B2005EF884 /* Preview Assets.xcassets */; };
-		CF5A3F232BAF3800005EF884 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A3F222BAF3800005EF884 /* ContentViewModel.swift */; };
+		CF5A3F232BAF3800005EF884 /* ConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5A3F222BAF3800005EF884 /* ConversionViewModel.swift */; };
 		CF84B62D2C1DBA1400815617 /* FlagEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84B62C2C1DBA1400815617 /* FlagEmoji.swift */; };
 		CF84B62F2C28482F00815617 /* FlagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84B62E2C28482F00815617 /* FlagPickerView.swift */; };
 /* End PBXBuildFile section */
@@ -19,10 +19,10 @@
 /* Begin PBXFileReference section */
 		CF5A3F112BAF35B1005EF884 /* Coiny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coiny.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5A3F142BAF35B1005EF884 /* CoinyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinyApp.swift; sourceTree = "<group>"; };
-		CF5A3F162BAF35B1005EF884 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CF5A3F162BAF35B1005EF884 /* ConversionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionView.swift; sourceTree = "<group>"; };
 		CF5A3F182BAF35B2005EF884 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF5A3F1B2BAF35B2005EF884 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CF5A3F222BAF3800005EF884 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		CF5A3F222BAF3800005EF884 /* ConversionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewModel.swift; sourceTree = "<group>"; };
 		CF84B62C2C1DBA1400815617 /* FlagEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagEmoji.swift; sourceTree = "<group>"; };
 		CF84B62E2C28482F00815617 /* FlagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,13 +57,9 @@
 		CF5A3F132BAF35B1005EF884 /* Coiny */ = {
 			isa = PBXGroup;
 			children = (
-				CF5A3F142BAF35B1005EF884 /* CoinyApp.swift */,
-				CF5A3F162BAF35B1005EF884 /* ContentView.swift */,
-				CF5A3F182BAF35B2005EF884 /* Assets.xcassets */,
+				CF84B6372C29F7B500815617 /* Pages */,
+				CF84B6362C29F79D00815617 /* App */,
 				CF5A3F1A2BAF35B2005EF884 /* Preview Content */,
-				CF5A3F222BAF3800005EF884 /* ContentViewModel.swift */,
-				CF84B62C2C1DBA1400815617 /* FlagEmoji.swift */,
-				CF84B62E2C28482F00815617 /* FlagPickerView.swift */,
 			);
 			path = Coiny;
 			sourceTree = "<group>";
@@ -74,6 +70,50 @@
 				CF5A3F1B2BAF35B2005EF884 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CF84B6362C29F79D00815617 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CF5A3F182BAF35B2005EF884 /* Assets.xcassets */,
+				CF5A3F142BAF35B1005EF884 /* CoinyApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CF84B6372C29F7B500815617 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				CF84B6382C29F7E600815617 /* Conversion */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		CF84B6382C29F7E600815617 /* Conversion */ = {
+			isa = PBXGroup;
+			children = (
+				CF84B63A2C29F81700815617 /* Models */,
+				CF84B6392C29F7FF00815617 /* Views */,
+				CF5A3F222BAF3800005EF884 /* ConversionViewModel.swift */,
+			);
+			path = Conversion;
+			sourceTree = "<group>";
+		};
+		CF84B6392C29F7FF00815617 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF84B62E2C28482F00815617 /* FlagPickerView.swift */,
+				CF5A3F162BAF35B1005EF884 /* ConversionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CF84B63A2C29F81700815617 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CF84B62C2C1DBA1400815617 /* FlagEmoji.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,9 +188,9 @@
 			files = (
 				CF84B62D2C1DBA1400815617 /* FlagEmoji.swift in Sources */,
 				CF84B62F2C28482F00815617 /* FlagPickerView.swift in Sources */,
-				CF5A3F172BAF35B1005EF884 /* ContentView.swift in Sources */,
+				CF5A3F172BAF35B1005EF884 /* ConversionView.swift in Sources */,
 				CF5A3F152BAF35B1005EF884 /* CoinyApp.swift in Sources */,
-				CF5A3F232BAF3800005EF884 /* ContentViewModel.swift in Sources */,
+				CF5A3F232BAF3800005EF884 /* ConversionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

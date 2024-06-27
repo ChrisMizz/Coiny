@@ -1,5 +1,5 @@
 //
-//  ContentViewModel.swift
+//  ConversionViewModel.swift
 //  Coiny
 //
 //  Created by Christoffer Detlef on 24/03/2024.
@@ -10,7 +10,7 @@ import Combine
 import Observation
 
 @Observable
-class ContentViewModel {
+class ConversionViewModel {
 	private var subscriptions = Set<AnyCancellable>()
 	
 	var selectedCurrency: String = "EUR"
@@ -49,7 +49,7 @@ class ContentViewModel {
 
 
 // MARK: Public functions
-extension ContentViewModel {
+extension ConversionViewModel {
 	func flagEmoji(currency: String) -> String {
 		return flagEmojis[currency] ?? "🇺🇸"
 	}

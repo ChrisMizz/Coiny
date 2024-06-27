@@ -11,7 +11,7 @@ import SwiftUI
 struct CoinyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			ConversionView()
         }
     }
 }

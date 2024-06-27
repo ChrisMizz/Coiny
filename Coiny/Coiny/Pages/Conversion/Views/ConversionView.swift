@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ConversionView.swift
 //  Coiny
 //
 //  Created by Christoffer Detlef on 24/03/2024.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ContentView: View {
-	@State private var viewModel = ContentViewModel()
+struct ConversionView: View {
+	@State private var viewModel = ConversionViewModel()
 	@State private var topValue: Double? = nil
 	@State private var bottomValue: Double? = nil
 
@@ -125,5 +125,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+	ConversionView()
 }
