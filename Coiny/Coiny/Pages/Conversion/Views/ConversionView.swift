@@ -29,6 +29,8 @@ struct ConversionView: View {
 			bottomSection
 			
 			Spacer()
+			
+			ProgressView()
 		}
 		.onChange(of: topValue ?? 0) { _, input in
 			if primaryTextFieldFocusState {
