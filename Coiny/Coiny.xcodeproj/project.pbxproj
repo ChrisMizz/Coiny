@@ -16,6 +16,7 @@
 		CF84B62F2C28482F00815617 /* FlagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84B62E2C28482F00815617 /* FlagPickerView.swift */; };
 		CF970FFF2C2DEFE2004E8C4F /* CurrencyDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF970FFE2C2DEFE2004E8C4F /* CurrencyDataResponse.swift */; };
 		CF9710022C2DF034004E8C4F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9710012C2DF034004E8C4F /* APIService.swift */; };
+		CF9710052C31E0E6004E8C4F /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9710042C31E0E6004E8C4F /* DateFormatter+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		CF84B62E2C28482F00815617 /* FlagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPickerView.swift; sourceTree = "<group>"; };
 		CF970FFE2C2DEFE2004E8C4F /* CurrencyDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataResponse.swift; sourceTree = "<group>"; };
 		CF9710012C2DF034004E8C4F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		CF9710042C31E0E6004E8C4F /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +63,10 @@
 		CF5A3F132BAF35B1005EF884 /* Coiny */ = {
 			isa = PBXGroup;
 			children = (
+				CF84B6362C29F79D00815617 /* App */,
+				CF9710032C31E0D4004E8C4F /* Extensions */,
 				CF84B6372C29F7B500815617 /* Pages */,
 				CF9710002C2DF026004E8C4F /* Service */,
-				CF84B6362C29F79D00815617 /* App */,
 				CF5A3F1A2BAF35B2005EF884 /* Preview Content */,
 			);
 			path = Coiny;
@@ -128,6 +131,14 @@
 				CF9710012C2DF034004E8C4F /* APIService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		CF9710032C31E0D4004E8C4F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CF9710042C31E0E6004E8C4F /* DateFormatter+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +217,7 @@
 				CF84B62F2C28482F00815617 /* FlagPickerView.swift in Sources */,
 				CF5A3F172BAF35B1005EF884 /* ConversionView.swift in Sources */,
 				CF5A3F152BAF35B1005EF884 /* CoinyApp.swift in Sources */,
+				CF9710052C31E0E6004E8C4F /* DateFormatter+Extensions.swift in Sources */,
 				CF5A3F232BAF3800005EF884 /* ConversionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -190,6 +190,7 @@ class FlagEmoji {
 		"NOK": "🇳🇴"
 	]
 	
+	// Returns a list of all the flags in a sorted order. The sorted order is by name.
 	static var sortedFlags: [(key: String, value: String)] {
 		flagEmojis.sorted { $0.key < $1.key }
 	}

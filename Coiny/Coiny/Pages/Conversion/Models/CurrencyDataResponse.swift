@@ -17,6 +17,14 @@ struct CurrencyDataResponse: Decodable {
 	let rates: [String: Double]
 	
 	static func emptyData() -> CurrencyDataResponse {
-		return CurrencyDataResponse(success: false, terms: "", privacy: "", timestamp: 0, date: "", base: "", rates: ["": 0])
+		return CurrencyDataResponse(
+			success: false,
+			terms: "",
+			privacy: "",
+			timestamp: 0,
+			date: "",
+			base: "",
+			rates: ["": 0]
+		)
 	}
 }

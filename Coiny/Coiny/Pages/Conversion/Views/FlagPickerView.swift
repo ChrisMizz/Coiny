@@ -15,13 +15,7 @@ struct FlagPickerView: View {
     var body: some View {
 		ScrollView {
 			ForEach(FlagEmoji.sortedFlags, id: \.key) { currency, emoji in
-				HStack {
-					Text(emoji)
-						.font(.largeTitle)
-					Text(currency)
-					Spacer()
-				}
-				.padding()
+				flagCell(currency: currency, emoji: emoji)
 				.onTapGesture {
 					if selectedField == viewModel.selectedCurrency {
 						viewModel.selectedCurrency = currency
@@ -34,10 +28,19 @@ struct FlagPickerView: View {
 				Divider()
 			}
 		}
-		.onAppear {
-			print(selectedField)
-		}
     }
+	
+	private func flagCell(currency: String, emoji: String) -> some View {
+		HStack {
+			Text(emoji)
+				.font(.largeTitle)
+			
+			Text(currency)
+			
+			Spacer()
+		}
+		.padding()
+	}
 }
 
 #Preview {

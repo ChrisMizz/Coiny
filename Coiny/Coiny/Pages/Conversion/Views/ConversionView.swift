@@ -38,7 +38,7 @@ struct ConversionView: View {
 					.foregroundStyle(.secondary)
 					.onTapGesture {
 						// TODO: - Limit this to only allow this once every hour or something like that -CAD
-						viewModel.refetchData()
+						viewModel.fetchCurrencyData()
 					}
 			}
 		}

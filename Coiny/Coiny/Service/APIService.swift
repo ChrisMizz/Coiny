@@ -23,7 +23,6 @@ class APIService {
 					print("Error fetching data: \(error.localizedDescription)")
 				}
 			} receiveValue: { response in
-				print(response)
 				completion(response)
 			}.store(in: &subscriptions)
 	}
