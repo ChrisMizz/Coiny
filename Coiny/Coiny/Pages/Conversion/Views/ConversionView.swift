@@ -30,16 +30,26 @@ struct ConversionView: View {
 			
 			Spacer()
 			
-			ProgressView()
+			if viewModel.fetchingData {
+				ProgressView()
+			} else {
+				Text(viewModel.formattedDateString)
+					.font(.subheadline)
+					.foregroundStyle(.secondary)
+					.onTapGesture {
+						// TODO: - Limit this to only allow this once every hour or something like that -CAD
+						viewModel.refetchData()
+					}
+			}
 		}
 		.onChange(of: topValue ?? 0) { _, input in
 			if primaryTextFieldFocusState {
-				bottomValue = viewModel.convertCurrency(input: input, fromCurrency: viewModel.selectedCurrency, toCurrency: viewModel.secondarySelectedCurrency)
+				bottomValue = viewModel.convertCurrency(input: input, isTopSection: true)
 			}
 		}
 		.onChange(of: bottomValue ?? 0) { _, input in
 			if secondaryTextFieldFocusState {
-				topValue = viewModel.convertCurrency(input: input, fromCurrency: viewModel.secondarySelectedCurrency, toCurrency: viewModel.selectedCurrency)
+				topValue = viewModel.convertCurrency(input: input, isTopSection: false)
 			}
 		}
 		.sheet(isPresented: $presentFlagView, onDismiss: resetValues) {
@@ -60,7 +70,7 @@ struct ConversionView: View {
 			input(topValue)
 				.focused($primaryTextFieldFocusState)
 			
-			Text("1 \(viewModel.secondarySelectedCurrency) = \(viewModel.convertCurrency(fromCurrency: viewModel.secondarySelectedCurrency, toCurrency: viewModel.selectedCurrency)) \(viewModel.selectedCurrency)")
+			Text("1 \(viewModel.secondarySelectedCurrency) = \(viewModel.convertCurrency(isTopSection: false)) \(viewModel.selectedCurrency)")
 				.font(.subheadline)
 				.foregroundStyle(.secondary)
 
@@ -79,7 +89,7 @@ struct ConversionView: View {
 			input(bottomValue)
 				.focused($secondaryTextFieldFocusState)
 			
-			Text("1 \(viewModel.selectedCurrency) = \(viewModel.convertCurrency(fromCurrency: viewModel.selectedCurrency, toCurrency: viewModel.secondarySelectedCurrency)) \(viewModel.secondarySelectedCurrency)")
+			Text("1 \(viewModel.selectedCurrency) = \(viewModel.convertCurrency(isTopSection: true)) \(viewModel.secondarySelectedCurrency)")
 				.font(.subheadline)
 				.foregroundStyle(.secondary)
 		}

@@ -11,39 +11,37 @@ import Observation
 
 @Observable
 class ConversionViewModel {
-	private var subscriptions = Set<AnyCancellable>()
-	
 	var selectedCurrency: String = "EUR"
 	var secondarySelectedCurrency: String = "USD"
 	
-	var currencyDataRates: [String: Double] = [:]
-	
-	var sortedFlags: [(key: String, value: String)] {
-		flagEmojis.sorted { $0.key < $1.key }
+	var fetchingData: Bool = true
+	var currencyData: CurrencyDataResponse = .emptyData()
+	var formattedDateString: String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+		dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+		
+		if let date = dateFormatter.date(from: currencyData.date) {
+			let displayFormatter = DateFormatter()
+			displayFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
+			displayFormatter.timeZone = TimeZone.current
+			return displayFormatter.string(from: date)
+		} else {
+			return "Invalid date format"
+		}
 	}
 	
 	init() {
-		fetchData()
+		fetchCurrencyData()
 	}
 	
-	private func fetchData() {
-		guard let url = URL(string: "https://api.fxratesapi.com/latest") else {
-			return
-		}
+	private func fetchCurrencyData() {
+		self.fetchingData = true
 		
-		URLSession.shared.dataTaskPublisher(for: url)
-			.map { $0.data }
-			.decode(type: CurrencyDataResponse.self, decoder: JSONDecoder())
-			.receive(on: DispatchQueue.main)
-			.sink { completion in
-				if case let .failure(error) = completion {
-					print("Error fetching data: \(error.localizedDescription)")
-				}
-			} receiveValue: { response in
-				self.currencyDataRates = response.rates
-				print(response.rates)
-			}
-			.store(in: &subscriptions)
+		APIService.fetchData(urlString: "https://api.fxratesapi.com/latest", responseType: CurrencyDataResponse.self) { response in
+			self.currencyData = response
+			self.fetchingData = false
+		}
 	}
 }
 
@@ -51,11 +49,11 @@ class ConversionViewModel {
 // MARK: Public functions
 extension ConversionViewModel {
 	func flagEmoji(currency: String) -> String {
-		return flagEmojis[currency] ?? "🇺🇸"
+		return FlagEmoji.flagEmojis[currency] ?? "🇺🇸"
 	}
 	
-	func convertCurrency(input: Double = 1, fromCurrency: String, toCurrency: String) -> Double {
-		guard let fromRate = currencyDataRates[fromCurrency], let toRate = currencyDataRates[toCurrency] else {
+	func convertCurrency(input: Double = 1, isTopSection: Bool) -> Double {
+		guard let fromRate = currencyData.rates[isTopSection ? selectedCurrency : secondarySelectedCurrency], let toRate = currencyData.rates[isTopSection ? secondarySelectedCurrency : selectedCurrency] else {
 			return 0
 		}
 
@@ -63,14 +61,8 @@ extension ConversionViewModel {
 
 		return input / conversionRate
 	}
-}
-
-struct CurrencyDataResponse: Decodable {
-	let success: Bool
-	let terms: String
-	let privacy: String
-	let timestamp: Int
-	let date: String
-	let base: String
-	let rates: [String: Double]
+	
+	func refetchData() {
+		fetchCurrencyData()
+	}
 }

@@ -14,7 +14,7 @@ struct FlagPickerView: View {
 
     var body: some View {
 		ScrollView {
-			ForEach(viewModel.sortedFlags, id: \.key) { currency, emoji in
+			ForEach(FlagEmoji.sortedFlags, id: \.key) { currency, emoji in
 				HStack {
 					Text(emoji)
 						.font(.largeTitle)
