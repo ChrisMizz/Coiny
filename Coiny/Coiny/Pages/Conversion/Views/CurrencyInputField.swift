@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CurrencyInputField: View {
 	@Binding var value: Double?
-	@FocusState var isFocused: Bool
+	var field: FocusField
+	@FocusState var focusedField: FocusField?
 
 	var body: some View {
 		TextField("0", value: $value, format: .number)
@@ -17,10 +18,10 @@ struct CurrencyInputField: View {
 			.padding()
 			.multilineTextAlignment(.center)
 			.font(.system(size: 60))
-			.focused($isFocused)
+			.focused($focusedField, equals: field)
 	}
 }
 
 #Preview {
-	CurrencyInputField(value: .constant(0))
+	CurrencyInputField(value: .constant(0), field: .topSection)
 }

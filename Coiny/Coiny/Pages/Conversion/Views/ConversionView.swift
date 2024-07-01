@@ -14,8 +14,7 @@ struct ConversionView: View {
 	@State private var presentFlagView = false
 	@State private var selectedField: String = ""
 
-	@FocusState private var primaryTextFieldFocusState: Bool
-	@FocusState private var secondaryTextFieldFocusState: Bool
+	@FocusState private var focusedField: FocusField?
 
 	var body: some View {
 		VStack(spacing: 20) {
@@ -43,12 +42,12 @@ struct ConversionView: View {
 			}
 		}
 		.onChange(of: topValue ?? 0) { _, input in
-			if primaryTextFieldFocusState {
+			if focusedField == .topSection {
 				bottomValue = viewModel.convertCurrency(input: input, isTopSection: true)
 			}
 		}
 		.onChange(of: bottomValue ?? 0) { _, input in
-			if secondaryTextFieldFocusState {
+			if focusedField == .bottomSection {
 				topValue = viewModel.convertCurrency(input: input, isTopSection: false)
 			}
 		}
@@ -62,14 +61,13 @@ struct ConversionView: View {
 		VStack(spacing: 0) {
 			Button {
 				selectedField = viewModel.selectedCurrency
-				primaryTextFieldFocusState = false
-				secondaryTextFieldFocusState = false
+				focusedField = nil
 				presentFlagView.toggle()
 			} label: {
 				currencySelector(viewModel.selectedCurrency)
 			}
 
-			CurrencyInputField(value: $topValue, isFocused: _primaryTextFieldFocusState)
+			CurrencyInputField(value: $topValue, field: .topSection, focusedField: _focusedField)
 			
 			Text("1 \(viewModel.secondarySelectedCurrency) = \(viewModel.convertCurrency(isTopSection: false)) \(viewModel.selectedCurrency)")
 				.font(.subheadline)
@@ -82,14 +80,13 @@ struct ConversionView: View {
 		VStack(spacing: 0) {
 			Button {
 				selectedField = viewModel.secondarySelectedCurrency
-				primaryTextFieldFocusState = false
-				secondaryTextFieldFocusState = false
+				focusedField = nil
 				presentFlagView.toggle()
 			} label: {
 				currencySelector(viewModel.secondarySelectedCurrency)
 			}
 			
-			CurrencyInputField(value: $bottomValue, isFocused: _secondaryTextFieldFocusState)
+			CurrencyInputField(value: $bottomValue, field: .bottomSection, focusedField: _focusedField)
 			
 			Text("1 \(viewModel.selectedCurrency) = \(viewModel.convertCurrency(isTopSection: true)) \(viewModel.secondarySelectedCurrency)")
 				.font(.subheadline)
@@ -114,8 +111,7 @@ struct ConversionView: View {
 	}
 
 	private func resetValues() {
-		primaryTextFieldFocusState = false
-		secondaryTextFieldFocusState = false
+		focusedField = nil
 		topValue = nil
 		bottomValue = nil
 	}
