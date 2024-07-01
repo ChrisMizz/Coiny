@@ -19,6 +19,7 @@
 		CF9710052C31E0E6004E8C4F /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9710042C31E0E6004E8C4F /* DateFormatter+Extensions.swift */; };
 		CF9710072C32973E004E8C4F /* CurrencyInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9710062C32973E004E8C4F /* CurrencyInputField.swift */; };
 		CF9710092C32A1B0004E8C4F /* FocusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9710082C32A1B0004E8C4F /* FocusField.swift */; };
+		CF97100C2C332C6F004E8C4F /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97100B2C332C6F004E8C4F /* ButtonStyles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		CF9710042C31E0E6004E8C4F /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		CF9710062C32973E004E8C4F /* CurrencyInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInputField.swift; sourceTree = "<group>"; };
 		CF9710082C32A1B0004E8C4F /* FocusField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusField.swift; sourceTree = "<group>"; };
+		CF97100B2C332C6F004E8C4F /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		CF84B6372C29F7B500815617 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				CF97100A2C332B5E004E8C4F /* Shared */,
 				CF84B6382C29F7E600815617 /* Conversion */,
 			);
 			path = Pages;
@@ -145,6 +148,14 @@
 				CF9710042C31E0E6004E8C4F /* DateFormatter+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CF97100A2C332B5E004E8C4F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CF97100B2C332C6F004E8C4F /* ButtonStyles.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +237,7 @@
 				CF9710072C32973E004E8C4F /* CurrencyInputField.swift in Sources */,
 				CF9710052C31E0E6004E8C4F /* DateFormatter+Extensions.swift in Sources */,
 				CF5A3F232BAF3800005EF884 /* ConversionViewModel.swift in Sources */,
+				CF97100C2C332C6F004E8C4F /* ButtonStyles.swift in Sources */,
 				CF9710092C32A1B0004E8C4F /* FocusField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

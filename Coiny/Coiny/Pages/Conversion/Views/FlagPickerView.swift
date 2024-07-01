@@ -14,32 +14,40 @@ struct FlagPickerView: View {
 
     var body: some View {
 		ScrollView {
-			ForEach(FlagEmoji.sortedFlags, id: \.key) { currency, emoji in
-				flagCell(currency: currency, emoji: emoji)
-				.onTapGesture {
-					if selectedField == viewModel.selectedCurrency {
-						viewModel.selectedCurrency = currency
-					} else {
-						viewModel.secondarySelectedCurrency = currency
-					}
-					dismiss()
+			VStack(spacing: 0) {
+				ForEach(FlagEmoji.sortedFlags, id: \.key) { currency, emoji in
+					flagCell(currency: currency, emoji: emoji)
 				}
-				
-				Divider()
 			}
 		}
     }
 	
 	private func flagCell(currency: String, emoji: String) -> some View {
-		HStack {
-			Text(emoji)
-				.font(.largeTitle)
+		Button {
+			if selectedField == viewModel.selectedCurrency {
+				viewModel.selectedCurrency = currency
+			} else {
+				viewModel.secondarySelectedCurrency = currency
+			}
 			
-			Text(currency)
-			
-			Spacer()
+			dismiss()
+		} label: {
+			VStack {
+				HStack {
+					Text(emoji)
+						.font(.largeTitle)
+					
+					Text(currency)
+					
+					Spacer()
+				}
+				.padding()
+
+				Divider()
+			}
 		}
-		.padding()
+		.disabled(viewModel.disableFlagCellButton(currency: currency))
+		.buttonStyle(.flagStyle)
 	}
 }
 
