@@ -59,4 +59,12 @@ extension ConversionViewModel {
 			self.fetchingData = false
 		}
 	}
+	
+	func disableFlagCellButton(currency: String) -> Bool {
+		if selectedCurrency == currency || secondarySelectedCurrency == currency {
+			return true
+		}
+		
+		return false
+	}
 }
