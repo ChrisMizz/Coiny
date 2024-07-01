@@ -11,9 +11,9 @@ struct ConversionView: View {
 	@State private var viewModel = ConversionViewModel()
 	@State private var topValue: Double? = nil
 	@State private var bottomValue: Double? = nil
-
 	@State private var presentFlagView = false
 	@State private var selectedField: String = ""
+
 	@FocusState private var primaryTextFieldFocusState: Bool
 	@FocusState private var secondaryTextFieldFocusState: Bool
 
@@ -62,13 +62,14 @@ struct ConversionView: View {
 		VStack(spacing: 0) {
 			Button {
 				selectedField = viewModel.selectedCurrency
+				primaryTextFieldFocusState = false
+				secondaryTextFieldFocusState = false
 				presentFlagView.toggle()
 			} label: {
 				currencySelector(viewModel.selectedCurrency)
 			}
 
-			input(topValue)
-				.focused($primaryTextFieldFocusState)
+			CurrencyInputField(value: $topValue, isFocused: _primaryTextFieldFocusState)
 			
 			Text("1 \(viewModel.secondarySelectedCurrency) = \(viewModel.convertCurrency(isTopSection: false)) \(viewModel.selectedCurrency)")
 				.font(.subheadline)
@@ -81,13 +82,14 @@ struct ConversionView: View {
 		VStack(spacing: 0) {
 			Button {
 				selectedField = viewModel.secondarySelectedCurrency
+				primaryTextFieldFocusState = false
+				secondaryTextFieldFocusState = false
 				presentFlagView.toggle()
 			} label: {
 				currencySelector(viewModel.secondarySelectedCurrency)
 			}
 			
-			input(bottomValue)
-				.focused($secondaryTextFieldFocusState)
+			CurrencyInputField(value: $bottomValue, isFocused: _secondaryTextFieldFocusState)
 			
 			Text("1 \(viewModel.selectedCurrency) = \(viewModel.convertCurrency(isTopSection: true)) \(viewModel.secondarySelectedCurrency)")
 				.font(.subheadline)
@@ -109,23 +111,6 @@ struct ConversionView: View {
 			}
 			.foregroundStyle(.black)
 		}
-	}
-	
-	private func input(_ selectedValue: Double?) -> some View {
-		TextField("0", value: Binding(
-			get: { selectedValue },
-			set: {
-				if primaryTextFieldFocusState {
-					topValue = $0
-				} else {
-					bottomValue = $0
-				}
-			}
-		),format: .number)
-		.keyboardType(.decimalPad)
-		.padding()
-		.multilineTextAlignment(.center) // Center the text inside the TextField
-		.font(.system(size: 60))
 	}
 
 	private func resetValues() {
