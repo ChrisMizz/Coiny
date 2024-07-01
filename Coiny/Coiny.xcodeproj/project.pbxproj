@@ -17,6 +17,8 @@
 		CF970FFF2C2DEFE2004E8C4F /* CurrencyDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF970FFE2C2DEFE2004E8C4F /* CurrencyDataResponse.swift */; };
 		CF9710022C2DF034004E8C4F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9710012C2DF034004E8C4F /* APIService.swift */; };
 		CF9710052C31E0E6004E8C4F /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9710042C31E0E6004E8C4F /* DateFormatter+Extensions.swift */; };
+		CF9710072C32973E004E8C4F /* CurrencyInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9710062C32973E004E8C4F /* CurrencyInputField.swift */; };
+		CF9710092C32A1B0004E8C4F /* FocusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9710082C32A1B0004E8C4F /* FocusField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		CF970FFE2C2DEFE2004E8C4F /* CurrencyDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataResponse.swift; sourceTree = "<group>"; };
 		CF9710012C2DF034004E8C4F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		CF9710042C31E0E6004E8C4F /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		CF9710062C32973E004E8C4F /* CurrencyInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInputField.swift; sourceTree = "<group>"; };
+		CF9710082C32A1B0004E8C4F /* FocusField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 			children = (
 				CF84B62E2C28482F00815617 /* FlagPickerView.swift */,
 				CF5A3F162BAF35B1005EF884 /* ConversionView.swift */,
+				CF9710062C32973E004E8C4F /* CurrencyInputField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 			children = (
 				CF84B62C2C1DBA1400815617 /* FlagEmoji.swift */,
 				CF970FFE2C2DEFE2004E8C4F /* CurrencyDataResponse.swift */,
+				CF9710082C32A1B0004E8C4F /* FocusField.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -217,8 +223,10 @@
 				CF84B62F2C28482F00815617 /* FlagPickerView.swift in Sources */,
 				CF5A3F172BAF35B1005EF884 /* ConversionView.swift in Sources */,
 				CF5A3F152BAF35B1005EF884 /* CoinyApp.swift in Sources */,
+				CF9710072C32973E004E8C4F /* CurrencyInputField.swift in Sources */,
 				CF9710052C31E0E6004E8C4F /* DateFormatter+Extensions.swift in Sources */,
 				CF5A3F232BAF3800005EF884 /* ConversionViewModel.swift in Sources */,
+				CF9710092C32A1B0004E8C4F /* FocusField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
