@@ -24,6 +24,16 @@ struct FlagPickerView: View {
 				}
 				.searchable(text: $searchText)
 			}
+			.toolbar {
+				ToolbarItem(placement: .navigationBarTrailing) {
+					Button {
+						dismiss()
+					} label: {
+						Image(systemName: "xmark")
+					}
+					.foregroundStyle(.primary)
+				}
+			}
 		}
     }
 	
