@@ -54,8 +54,12 @@ struct ConversionView: View {
 		.sheet(isPresented: $presentFlagView, onDismiss: resetValues) {
 			FlagPickerView(viewModel: viewModel, selectedField: $selectedField)
 		}
+		.toolbar {
+			ToolbarItemGroup(placement: .keyboard) {
+				toolbarItem
+			}
+		}
 	}
-	
 	
 	private var topSection: some View {
 		VStack(spacing: 0) {
@@ -109,7 +113,22 @@ struct ConversionView: View {
 			.foregroundStyle(.black)
 		}
 	}
+	
+	private var toolbarItem: some View {
+		HStack {
+			Spacer()
+			
+			Button {
+				focusedField = nil
+			} label: {
+				Text("Close")
+					.foregroundStyle(.black)
+			}
+		}
+	}
+}
 
+extension ConversionView {
 	private func resetValues() {
 		focusedField = nil
 		topValue = nil
