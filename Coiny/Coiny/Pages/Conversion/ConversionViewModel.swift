@@ -85,4 +85,12 @@ extension ConversionViewModel {
 		
 		return timeSinceLastPress >= twoHoursInSeconds
 	}
+	
+	func filteredFlags(_ searchText: String) -> [(key: String, value: String)] {
+		if searchText.isEmpty {
+			return FlagEmoji.sortedFlags
+		} else {
+			return FlagEmoji.sortedFlags.filter { $0.key.contains(searchText) || $0.value.contains(searchText) }
+		}
+	}
 }

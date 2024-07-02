@@ -11,12 +11,27 @@ struct FlagPickerView: View {
 	@State var viewModel: ConversionViewModel
 	@Binding var selectedField: String
 	@Environment(\.dismiss) var dismiss
+	
+	@State private var searchText = ""
 
     var body: some View {
-		ScrollView {
-			VStack(spacing: 0) {
-				ForEach(FlagEmoji.sortedFlags, id: \.key) { currency, emoji in
-					flagCell(currency: currency, emoji: emoji)
+		NavigationStack {
+			ScrollView {
+				VStack(spacing: 0) {
+					ForEach(viewModel.filteredFlags(searchText), id: \.key) { currency, emoji in
+						flagCell(currency: currency, emoji: emoji)
+					}
+				}
+				.searchable(text: $searchText)
+			}
+			.toolbar {
+				ToolbarItem(placement: .navigationBarTrailing) {
+					Button {
+						dismiss()
+					} label: {
+						Image(systemName: "xmark")
+					}
+					.foregroundStyle(.primary)
 				}
 			}
 		}
