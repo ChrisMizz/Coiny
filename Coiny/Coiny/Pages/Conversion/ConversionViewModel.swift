@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Observation
+import ObservableUserDefault
 
 @Observable
 class ConversionViewModel {
@@ -26,6 +27,12 @@ class ConversionViewModel {
 		return DateFormatter.fetchedDateFormat.string(from: date)
 	}
 	
+
+	// Stores the last time a user fetched the data again.
+	@ObservableUserDefault(.init(key: "lastPressedTime", store: .standard))
+	@ObservationIgnored
+	var lastPressedTime: Date?
+
 	init() {
 		fetchCurrencyData()
 	}
@@ -66,5 +73,16 @@ extension ConversionViewModel {
 		}
 		
 		return false
+	}
+	
+	func canPressButton() -> Bool {
+		guard let lastPressedTime = lastPressedTime else {
+			return true
+		}
+		
+		let timeSinceLastPress = Date().timeIntervalSince(lastPressedTime)
+		let twoHoursInSeconds: TimeInterval = 2 * 60 * 60 // 2 hours in seconds
+		
+		return timeSinceLastPress >= twoHoursInSeconds
 	}
 }

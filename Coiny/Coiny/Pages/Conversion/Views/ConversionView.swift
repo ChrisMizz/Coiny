@@ -13,6 +13,7 @@ struct ConversionView: View {
 	@State private var bottomValue: Double? = nil
 	@State private var presentFlagView = false
 	@State private var selectedField: String = ""
+	@State private var showAlert = false
 
 	@FocusState private var focusedField: FocusField?
 
@@ -37,7 +38,15 @@ struct ConversionView: View {
 					.foregroundStyle(.secondary)
 					.onTapGesture {
 						// TODO: - Limit this to only allow this once every hour or something like that -CAD
-						viewModel.fetchCurrencyData()
+						if viewModel.canPressButton() {
+							// Fetch the newest currency data.
+							viewModel.fetchCurrencyData()
+							// Update last pressed time
+							viewModel.lastPressedTime = Date()
+						} else {
+							// Show alert
+							showAlert = true
+						}
 					}
 			}
 		}
@@ -58,6 +67,11 @@ struct ConversionView: View {
 			ToolbarItemGroup(placement: .keyboard) {
 				toolbarItem
 			}
+		}
+		.alert("Data already fetched", isPresented: $showAlert) {
+			Button("Close", role: .cancel) {}
+		} message: {
+			Text("The data has already been fetched. You will have to wait a bit until you can try and fetch it again")
 		}
 	}
 	

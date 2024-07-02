@@ -20,6 +20,7 @@
 		CF9710072C32973E004E8C4F /* CurrencyInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9710062C32973E004E8C4F /* CurrencyInputField.swift */; };
 		CF9710092C32A1B0004E8C4F /* FocusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9710082C32A1B0004E8C4F /* FocusField.swift */; };
 		CF97100C2C332C6F004E8C4F /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97100B2C332C6F004E8C4F /* ButtonStyles.swift */; };
+		CF97100F2C33EE6D004E8C4F /* ObservableUserDefault in Frameworks */ = {isa = PBXBuildFile; productRef = CF97100E2C33EE6D004E8C4F /* ObservableUserDefault */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF97100F2C33EE6D004E8C4F /* ObservableUserDefault in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +176,9 @@
 			dependencies = (
 			);
 			name = Coiny;
+			packageProductDependencies = (
+				CF97100E2C33EE6D004E8C4F /* ObservableUserDefault */,
+			);
 			productName = Coiny;
 			productReference = CF5A3F112BAF35B1005EF884 /* Coiny.app */;
 			productType = "com.apple.product-type.application";
@@ -202,6 +207,9 @@
 				Base,
 			);
 			mainGroup = CF5A3F082BAF35B1005EF884;
+			packageReferences = (
+				CF97100D2C33EE6C004E8C4F /* XCRemoteSwiftPackageReference "ObservableUserDefault" */,
+			);
 			productRefGroup = CF5A3F122BAF35B1005EF884 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -444,6 +452,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CF97100D2C33EE6C004E8C4F /* XCRemoteSwiftPackageReference "ObservableUserDefault" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davidsteppenbeck/ObservableUserDefault.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CF97100E2C33EE6D004E8C4F /* ObservableUserDefault */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF97100D2C33EE6C004E8C4F /* XCRemoteSwiftPackageReference "ObservableUserDefault" */;
+			productName = ObservableUserDefault;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CF5A3F092BAF35B1005EF884 /* Project object */;
 }
