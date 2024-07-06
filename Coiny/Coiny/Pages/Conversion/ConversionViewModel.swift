@@ -64,7 +64,6 @@ extension ConversionViewModel {
 		APIService.fetchData(urlString: "https://api.fxratesapi.com/latest", responseType: CurrencyDataResponse.self) { response in
 			self.currencyData = response
 			self.fetchingData = false
-			self.lastPressedTime = .now
 		}
 	}
 	

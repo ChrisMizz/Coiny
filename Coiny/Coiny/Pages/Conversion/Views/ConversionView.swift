@@ -134,6 +134,7 @@ struct ConversionView: View {
 				if viewModel.canPressButton() {
 					// Fetch the newest currency data.
 					viewModel.fetchCurrencyData()
+					viewModel.lastPressedTime = .now
 				} else {
 					// Show alert
 					showAlert = true
