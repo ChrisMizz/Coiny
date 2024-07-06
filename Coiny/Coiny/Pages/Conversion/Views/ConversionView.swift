@@ -23,8 +23,7 @@ struct ConversionView: View {
 			
 			topSection
 			
-			Divider()
-				.padding(.vertical, 20)
+			divider
 			
 			bottomSection
 			
@@ -33,21 +32,7 @@ struct ConversionView: View {
 			if viewModel.fetchingData {
 				ProgressView()
 			} else {
-				Text(viewModel.formattedDateString)
-					.font(.subheadline)
-					.foregroundStyle(.secondary)
-					.onTapGesture {
-						// TODO: - Limit this to only allow this once every hour or something like that -CAD
-						if viewModel.canPressButton() {
-							// Fetch the newest currency data.
-							viewModel.fetchCurrencyData()
-							// Update last pressed time
-							viewModel.lastPressedTime = Date()
-						} else {
-							// Show alert
-							showAlert = true
-						}
-					}
+				fetchedText
 			}
 		}
 		.onChange(of: topValue ?? 0) { _, input in
@@ -139,6 +124,22 @@ struct ConversionView: View {
 					.foregroundStyle(.black)
 			}
 		}
+	}
+	
+	private var fetchedText: some View {
+		Text(viewModel.formattedDateString)
+			.font(.subheadline)
+			.foregroundStyle(.secondary)
+			.onTapGesture {
+				if viewModel.canPressButton() {
+					// Fetch the newest currency data.
+					viewModel.fetchCurrencyData()
+					viewModel.lastPressedTime = .now
+				} else {
+					// Show alert
+					showAlert = true
+				}
+			}
 	}
 }
 
